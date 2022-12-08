@@ -6,7 +6,7 @@
 /*   By: mbelbiad <mbelbiad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:30:23 by iakry             #+#    #+#             */
-/*   Updated: 2022/12/04 22:28:39 by mbelbiad         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:38:28 by mbelbiad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ double vert(t_var *var, double rayAngle)
         if (var->inter.is_ray_left)
             var->inter.x_tocheck += -1;
         var->inter.y_tocheck = var->inter.next_touch_y;
-        
         if (map_has_wall(var->inter.x_tocheck, var->inter.y_tocheck)) {
             var->inter.vert_wall_hit_x = var->inter.next_touch_x;
             var->inter.vert_wall_hit_y = var->inter.next_touch_y;

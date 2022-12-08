@@ -6,7 +6,7 @@
 /*   By: mbelbiad <mbelbiad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:19:32 by iakry             #+#    #+#             */
-/*   Updated: 2022/12/08 01:55:07 by mbelbiad         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:20:38 by mbelbiad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int initImg(t_var *var)
     var->imgTmp.img = mlx_new_image(var->mlxPtr, WINDOW_WIDTH, WINDOW_HEIGHT);
     var->imgTmp.imgAddr = mlx_get_data_addr(var->imgTmp.img, &var->imgTmp.bitsPerPixel, &var->imgTmp.lineLength,
 								&var->imgTmp.endian);
-     var->gg.img =  mlx_xpm_file_to_image(var->mlxPtr, "wall2.xpm", &x, &y);
-    var->gg.imgAddr = mlx_get_data_addr( var->imgTmp.img , &var->imgTmp.bitsPerPixel, &var->imgTmp.lineLength, &var->gg.endian);
+    var->gg.img =  mlx_xpm_file_to_image(var->mlxPtr, "sonic_wa9ef.xpm", &x, &y);
+    if (var->gg.img == NULL)
+        printf("3aa \n");
+    var->gg.imgAddr = mlx_get_data_addr( var->gg.img , &var->gg.bitsPerPixel, &var->gg.lineLength, &var->gg.endian);
     // var->gg.img =  mlx_xpm_file_to_image(var->mlxPtr, "wall2.xpm", &x, &y);
     // var->gg.imgAddr = mlx_get_data_addr( var->gg.img , &var->gg.bitsPerPixel, &var->gg.lineLength, &var->gg.endian);
     // printf("{%s}\n", var->gg.imgAddr);

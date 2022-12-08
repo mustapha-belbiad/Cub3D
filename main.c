@@ -6,7 +6,7 @@
 /*   By: mbelbiad <mbelbiad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 13:30:26 by iakry             #+#    #+#             */
-/*   Updated: 2022/12/08 01:22:54 by mbelbiad         ###   ########.fr       */
+/*   Updated: 2022/12/08 15:23:30 by mbelbiad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int movePlayer(t_var *var)
 int game_play(t_var *var)
 {
     render3Dprojection(var);
-    printf("hola\n");
     renderminimap(var);
 
     var->img.img = var->imgTmp.img;

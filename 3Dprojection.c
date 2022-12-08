@@ -6,7 +6,7 @@
 /*   By: mbelbiad <mbelbiad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 11:06:52 by iakry             #+#    #+#             */
-/*   Updated: 2022/12/08 02:12:32 by mbelbiad         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:25:24 by mbelbiad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void clear_img(t_var *var)
 
 void project3d(t_var *var, int id, double top, double bottom, int wall_height)
 {
+    (void)wall_height;
     int y;
     unsigned int *waltexture;
     waltexture = (unsigned int *)malloc(sizeof(unsigned int) * (unsigned int)TEX_WITH * (unsigned int) TEX_HEIGHT);
@@ -59,18 +60,13 @@ void project3d(t_var *var, int id, double top, double bottom, int wall_height)
         textureoffsetx = (int)var->ray[id].wallHitY % TILE_SIZE;
     else
         textureoffsetx = (int)var->ray[id].wallHitX % TILE_SIZE;
-    
-    int texnum = var->ray[id].wallContent - 1;
     while(y < bottom) 
     {
         int distancefromtop = y + (wall_height / 2) - (WINDOW_HEIGHT / 2);
-        printf("hahowa ja \n");
         int textureoffsety = distancefromtop* ((double)TEX_HEIGHT / wall_height);
-        printf("seeeer \n");
-        int texelcolor = var->texture[texnum][(TEX_WITH * textureoffsety) + textureoffsetx];
-        printf("dkhalt nrsam %p\n", &var->texture[texnum][(TEX_WITH * textureoffsety) + textureoffsetx]);
-        my_mlx_pixel_put(var, id, y, texelcolor);
-        y++;
+        char *texelcolor = var->gg.imgAddr + (textureoffsety * var->gg.lineLength + textureoffsetx * (var->gg.bitsPerPixel / 8));
+        my_mlx_pixel_put(var, id, y++, (int )texelcolor);
+        //y++;
        // }
         // Textures HERE!!!!!!!!!!!!!!!!!!!!!!!!!!
         
@@ -79,9 +75,8 @@ void project3d(t_var *var, int id, double top, double bottom, int wall_height)
         // else
         //     my_mlx_pixel_put(var, id, y++, 0x00CCCCCC);
     }
-        printf("hahowa ja %d\n", y);
     while (y < WINDOW_HEIGHT)
-        my_mlx_pixel_put(var, id, y++, 0x00000000);
+        my_mlx_pixel_put(var, id, y++,  0x00CCCCCC);
 }
 
 void render3Dprojection(t_var *var)
